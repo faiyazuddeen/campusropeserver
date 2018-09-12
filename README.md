@@ -1,2 +1,2 @@
 # campusropeserver
-loopback mongodb based server side of campusrope
+node.js express mongodb based server side of campusrope
