@@ -41,7 +41,7 @@ const config = {
   test: { },
   development: {
     mongo: {
-      uri: 'mongodb://localhost/campusropeserver-dev',
+      uri: 'mongodb://campusrope:uniteall1@ds119350.mlab.com:19350/campusrope' || 'mongodb://localhost/campusropeserver-dev',
       options: {
         debug: true
       }
