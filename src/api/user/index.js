@@ -117,4 +117,10 @@ router.delete('/:id',
   token({ required: true, roles: ['admin'] }),
   destroy)
 
+/**
+ * to create a new User without master method
+ */
+router.post('/register',
+  create)
+
 export default router
