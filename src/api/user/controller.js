@@ -138,7 +138,7 @@ export const signup = ({
   }
 }, res, next) => {
   User.create(body)
-    .then(user =>  {user: user.view(true)})
+    .then(user =>  ({user: user.view(true)}))
     .then(success(res, 201))
     .catch((err) => {
       /* istanbul ignore else */
