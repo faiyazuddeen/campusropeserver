@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { middleware as query } from 'querymen'
 import { middleware as body } from 'bodymen'
 import { password as passwordAuth, master, token } from '../../services/passport'
-import { index, showMe, show, create, update, updatePassword, destroy } from './controller'
+import { index, showMe, show, signup, update, updatePassword, destroy } from './controller'
 import { schema } from './model'
 export User, { schema } from './model'
 
@@ -118,9 +118,18 @@ router.delete('/:id',
   destroy)
 
 /**
- * to create a new User without master method
+ * @api {post} /signup Create new user
+ * @apiName Create New User
+ * @apiGroup User
+ * @apiParam {String} email User's email.
+ * @apiParam {String{6..}} password User's password.
+ * @apiParam {String} [name] User's name.
+ * @apiParam {String} [picture] User's picture.
+ * @apiSuccess (Sucess 201) {Object} user User's data.
+ * @apiError {Object} 400 Some parameters may contain invalid values.
+ * @apiError 409 Email already registered.
  */
-router.post('/register',
-  create)
+router.post('/signup',
+  signup)
 
 export default router

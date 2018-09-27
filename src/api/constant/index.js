@@ -1,6 +1,17 @@
-import { Router } from 'express'
-import { middleware as query } from 'querymen'
-import { create, index, show, update, destroy ,adminTasks} from './controller'
+import {
+  Router
+} from 'express'
+import {
+  middleware as query
+} from 'querymen'
+import {
+  create,
+  index,
+  show,
+  update,
+  destroy,
+  allconstants
+} from './controller'
 
 const router = new Router()
 
@@ -60,12 +71,12 @@ router.delete('/:id',
   destroy)
 
 /**
- * @api {get} /constants/adminTask/json get Admin Tasks as json
- * @apiName adminTasks
- * @apiSuccess (Success 200) 200 admin Task Json.
+ * @api {get} /constants/all get all constants as json
+ * @apiName GetAllConstants
+ * @apiSuccess (Success 200) 200 constants json.
  * @apiError 404 Constant not found.
  */
-router.get('/adminTask/json',
-  adminTasks)
+router.get('/all',
+  allconstants)
 
 export default router
