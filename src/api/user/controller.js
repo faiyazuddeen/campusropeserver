@@ -9,6 +9,8 @@ import {
   sign
 } from '../../services/jwt'
 
+import AdminTask from '../admintask/model'
+
 export const index = ({
     querymen: {
       query,
@@ -138,7 +140,16 @@ export const signup = ({
   }
 }, res, next) => {
   User.create(body)
-    .then(user =>  ({user: user.view(true)}))
+    .then(user => ({
+      user: user.view(true)
+    }))
+    .then((user) => {
+      const userId = user._id;
+      AdminTask.create({
+        userId
+      })
+      return user
+    })
     .then(success(res, 201))
     .catch((err) => {
       /* istanbul ignore else */

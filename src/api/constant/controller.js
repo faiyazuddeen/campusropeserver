@@ -1,8 +1,6 @@
-import admintasks from './admintasks';
-
 
 const constants = {
-  admintasks
+  
 }
 
 export const create = ({ body }, res, next) =>
@@ -21,4 +19,4 @@ export const destroy = ({ params }, res, next) =>
   res.status(204).end()
 
 export const allconstants = (req, res) =>
-  res.status(200).json(constants)
+  res.status(200).json({})
