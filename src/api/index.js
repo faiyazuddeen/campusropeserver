@@ -4,6 +4,7 @@ import auth from './auth'
 import passwordReset from './password-reset'
 import constant from './constant'
 import admintask from './admintask'
+import userProfile from './user_profile'
 
 const router = new Router()
 
@@ -35,5 +36,6 @@ router.use('/auth', auth)
 router.use('/password-resets', passwordReset)
 router.use('/constants', constant)
 router.use('/admintasks', admintask)
+router.use('/user_profiles', userProfile)
 
 export default router
