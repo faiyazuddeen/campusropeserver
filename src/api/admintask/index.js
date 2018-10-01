@@ -1,10 +1,10 @@
-import { Router } from 'express'
-import { middleware as query } from 'querymen'
-import { master, token } from '../../services/passport'
-import { create, index, show, update, destroy } from './controller'
-export Admintask, { schema } from './model'
+import { Router } from "express";
+import { middleware as query } from "querymen";
+import { master, token } from "../../services/passport";
+import { create, index, show, update, destroy } from "./controller";
+export Admintask, { schema } from "./model";
 
-const router = new Router()
+const router = new Router();
 
 /**
  * @api {post} /admintasks Create admintask
@@ -17,9 +17,7 @@ const router = new Router()
  * @apiError 404 Admintask not found.
  * @apiError 401 master access only.
  */
-router.post('/',
-  master(),
-  create)
+router.post("/", master(), create);
 
 /**
  * @api {get} /admintasks Retrieve admintasks
@@ -32,10 +30,7 @@ router.post('/',
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 admin access only.
  */
-router.get('/',
-  token({ required: true, roles: ['admin'] }),
-  query(),
-  index)
+router.get("/", token({ required: true, roles: ["admin"] }), query(), index);
 
 /**
  * @api {get} /admintasks/:id Retrieve admintask
@@ -48,9 +43,7 @@ router.get('/',
  * @apiError 404 Admintask not found.
  * @apiError 401 admin access only.
  */
-router.get('/:id',
-  token({ required: true, roles: ['admin'] }),
-  show)
+router.get("/:id", token({ required: true, roles: ["admin"] }), show);
 
 /**
  * @api {put} /admintasks/:id Update admintask
@@ -63,9 +56,7 @@ router.get('/:id',
  * @apiError 404 Admintask not found.
  * @apiError 401 master access only.
  */
-router.put('/:id',
-  master(),
-  update)
+router.put("/:id", master(), update);
 
 /**
  * @api {delete} /admintasks/:id Delete admintask
@@ -77,8 +68,6 @@ router.put('/:id',
  * @apiError 404 Admintask not found.
  * @apiError 401 master access only.
  */
-router.delete('/:id',
-  master(),
-  destroy)
+router.delete("/:id", master(), destroy);
 
-export default router
+export default router;

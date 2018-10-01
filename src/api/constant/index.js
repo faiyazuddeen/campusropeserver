@@ -1,9 +1,5 @@
-import {
-  Router
-} from 'express'
-import {
-  middleware as query
-} from 'querymen'
+import { Router } from "express";
+import { middleware as query } from "querymen";
 import {
   create,
   index,
@@ -11,9 +7,9 @@ import {
   update,
   destroy,
   allconstants
-} from './controller'
+} from "./controller";
 
-const router = new Router()
+const router = new Router();
 
 /**
  * @api {post} /constants Create constant
@@ -23,8 +19,7 @@ const router = new Router()
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Constant not found.
  */
-router.post('/',
-  create)
+router.post("/", create);
 
 /**
  * @api {get} /constants Retrieve constants
@@ -34,9 +29,7 @@ router.post('/',
  * @apiSuccess {Object[]} constants List of constants.
  * @apiError {Object} 400 Some parameters may contain invalid values.
  */
-router.get('/',
-  query(),
-  index)
+router.get("/", query(), index);
 
 /**
  * @api {get} /constants/:id Retrieve constant
@@ -46,8 +39,7 @@ router.get('/',
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Constant not found.
  */
-router.get('/:id',
-  show)
+router.get("/:id", show);
 
 /**
  * @api {put} /constants/:id Update constant
@@ -57,8 +49,7 @@ router.get('/:id',
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 404 Constant not found.
  */
-router.put('/:id',
-  update)
+router.put("/:id", update);
 
 /**
  * @api {delete} /constants/:id Delete constant
@@ -67,8 +58,7 @@ router.put('/:id',
  * @apiSuccess (Success 204) 204 No Content.
  * @apiError 404 Constant not found.
  */
-router.delete('/:id',
-  destroy)
+router.delete("/:id", destroy);
 
 /**
  * @api {get} /constants/all get all constants as json
@@ -76,7 +66,6 @@ router.delete('/:id',
  * @apiSuccess (Success 200) 200 constants json.
  * @apiError 404 Constant not found.
  */
-router.get('/all',
-  allconstants)
+router.get("/all", allconstants);
 
-export default router
+export default router;

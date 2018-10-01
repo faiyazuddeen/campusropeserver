@@ -1,10 +1,10 @@
-import { Router } from 'express'
-import { middleware as query } from 'querymen'
-import { token } from '../../services/passport'
-import { create, index, show, update, destroy } from './controller'
-export UserProfile, { schema } from './model'
+import { Router } from "express";
+import { middleware as query } from "querymen";
+import { token } from "../../services/passport";
+import { create, index, show, update, destroy } from "./controller";
+export UserProfile, { schema } from "./model";
 
-const router = new Router()
+const router = new Router();
 
 /**
  * @api {post} /user_profiles Create user profile
@@ -17,9 +17,7 @@ const router = new Router()
  * @apiError 404 User profile not found.
  * @apiError 401 user access only.
  */
-router.post('/',
-  token({ required: true }),
-  create)
+router.post("/", token({ required: true }), create);
 
 /**
  * @api {get} /user_profiles Retrieve user profiles
@@ -32,10 +30,7 @@ router.post('/',
  * @apiError {Object} 400 Some parameters may contain invalid values.
  * @apiError 401 user access only.
  */
-router.get('/',
-  token({ required: true }),
-  query(),
-  index)
+router.get("/", token({ required: true }), query(), index);
 
 /**
  * @api {get} /user_profiles/:id Retrieve user profile
@@ -48,9 +43,7 @@ router.get('/',
  * @apiError 404 User profile not found.
  * @apiError 401 user access only.
  */
-router.get('/:id',
-  token({ required: true }),
-  show)
+router.get("/:id", token({ required: true }), show);
 
 /**
  * @api {put} /user_profiles/:id Update user profile
@@ -63,9 +56,7 @@ router.get('/:id',
  * @apiError 404 User profile not found.
  * @apiError 401 user access only.
  */
-router.put('/:id',
-  token({ required: true }),
-  update)
+router.put("/:id", token({ required: true }), update);
 
 /**
  * @api {delete} /user_profiles/:id Delete user profile
@@ -77,8 +68,6 @@ router.put('/:id',
  * @apiError 404 User profile not found.
  * @apiError 401 user access only.
  */
-router.delete('/:id',
-  token({ required: true }),
-  destroy)
+router.delete("/:id", token({ required: true }), destroy);
 
-export default router
+export default router;
